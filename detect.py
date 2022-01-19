@@ -97,7 +97,7 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
         else:
             check_requirements(('onnx', 'onnxruntime-gpu' if torch.has_cuda else 'onnxruntime'))
             import onnxruntime
-            session = onnxruntime.InferenceSession(w, None)
+            session = onnxruntime.InferenceSession(w, None, providers=['TensorrtExecutionProvider', 'CUDAExecutionProvider', 'CPUExecutionProvider'])
     else:  # TensorFlow models
         import tensorflow as tf
         if pb:  # https://www.tensorflow.org/guide/migrate#a_graphpb_or_graphpbtxt

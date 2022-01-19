@@ -493,6 +493,7 @@ def main(opt, callbacks=Callbacks()):
         print_args(FILE.stem, opt)
         check_git_status()
         check_requirements(exclude=['thop'])
+        check_dataset(opt.data)
 
     # Resume
     if opt.resume and not check_wandb_resume(opt) and not opt.evolve:  # resume an interrupted run
